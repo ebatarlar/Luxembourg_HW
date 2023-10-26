@@ -4,6 +4,18 @@ format: html
 editor: visual
 ---
 
+# Luxembourg Data Project
+
+## Introduction
+
+![](images/lux_rhode_island.png)
+
+![](images/unnamed-chunk-2-1.png)
+
+## Getting Data From Web
+
+![](images/obs_hab_xlsx_overview.png)
+
 ```{r packages warning = FALSE }
 library(dplyr)
 library(purrr)
@@ -23,6 +35,8 @@ download.file(url , raw_data , method = "auto" , mode = "wb")
 sheets <- excel_sheets(raw_data)
 
 ```
+
+## Preparing Dataset
 
 ```{r}
 
