@@ -16,12 +16,17 @@ editor: visual
 
 ![](images/obs_hab_xlsx_overview.png)
 
-```{r packages warning = FALSE }
+```{r}
+#| warning: false
+#| echo: false
+
 library(dplyr)
 library(purrr)
 library(readxl)
 library(stringr)
 library(janitor)
+library(ggplot2)
+
 ```
 
 ```{r}
@@ -191,4 +196,31 @@ communes[which(communes == "Petange")] <- "Pétange"
 ```{r}
 setdiff(unique(commune_level_data$locality),
         communes)
+```
+
+## Adding Our Own Plot
+
+@fig-prices-eu-lu below shows the value of the House Price Index over time for Luxembourg and the European Union. Additionally, the data was downloaded from [here](https://raps-with-r.dev/project_start.html).
+
+```{r}
+#| label: fig-prices-eu-lu
+#| warning: false
+#| echo: false
+#| fig-cap: 
+#|  House price index for LU vs EU
+
+input <- "D:/Kitaplar/METU-PHD/COURSES/3-TERM/STAT570/1ST_Luxembourg_HW/Luxembourg_HW/prc_hpi_a__custom_4705395_page_linear.csv"
+data <- read.csv(input)
+
+ggplot(data, aes(x=TIME_PERIOD, y=OBS_VALUE, color= geo)) + theme_bw() +   
+ggtitle("House Price Index over time for Luxembourg and the European Union") + 
+labs(x="",y="", caption = "Source: Eurostat") +
+geom_line(linewidth=2) + 
+scale_color_manual( values=c(EU="firebrick", LU="navyblue"),
+                    guide = guide_legend(ncol = 2)) + 
+  theme(legend.position ="top",legend.title = element_blank() ) + 
+  theme(plot.title = element_text(color="#666666", face="bold", size=12, hjust = 0.05, vjust=2.12)) + 
+  theme(
+    axis.text.y = element_text(size=10, face="bold"),
+    axis.text.x = element_text(size=10,angle=45, hjust=1, face="bold")) 
 ```
