@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-# Luxembourg Data Project
+# Luxembourg Data Projectt s
 
 ## Introduction
 
@@ -41,7 +41,7 @@ sheets <- excel_sheets(raw_data)
 
 ```
 
-## Preparing Dataset
+## Preparing Datasetttts s
 
 ```{r}
 
