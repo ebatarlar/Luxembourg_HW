@@ -224,5 +224,4 @@ scale_color_manual( values=c(EU="firebrick", LU="navyblue"),
   theme(
     axis.text.y = element_text(size=10, face="bold"),
     axis.text.x = element_text(size=10,angle=45, hjust=1, face="bold"))
-
 ```
