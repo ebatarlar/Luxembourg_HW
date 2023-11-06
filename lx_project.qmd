@@ -209,8 +209,9 @@ setdiff(unique(commune_level_data$locality),
 #| fig-cap: 
 #|  House price index for LU vs EU
 
-input <- "D:/Kitaplar/METU-PHD/COURSES/3-TERM/STAT570/1ST_Luxembourg_HW/Luxembourg_HW/prc_hpi_a__custom_4705395_page_linear.csv"
-data <- read.csv(input)
+url <- gzcon(url("https://github.com/b-rodrigues/rap4all/raw/master/datasets/prc_hpi_a__custom_4705395_page_linear.csv.gz"))
+txt <- readLines(url)
+data <- read.csv(textConnection(txt))
 
 ggplot(data, aes(x=TIME_PERIOD, y=OBS_VALUE, color= geo)) + theme_bw() +   
 ggtitle("House Price Index over time for Luxembourg and the European Union") + 
@@ -222,5 +223,5 @@ scale_color_manual( values=c(EU="firebrick", LU="navyblue"),
   theme(plot.title = element_text(color="#666666", face="bold", size=12, hjust = 0.05, vjust=2.12)) + 
   theme(
     axis.text.y = element_text(size=10, face="bold"),
-    axis.text.x = element_text(size=10,angle=45, hjust=1, face="bold")) 
+    axis.text.x = element_text(size=10,angle=45, hjust=1, face="bold"))
 ```
